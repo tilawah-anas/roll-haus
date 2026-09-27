@@ -1,1 +1,62 @@
-@import "tailwindcss";
+:root {
+  --primary: #fce6e9;
+  --secondary: #c23a61;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: rgba(252, 230, 233, 1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--secondary);
+  padding: 0 20px 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 70px;
+  }
+}
+
+.nav-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  .cart {
+    color: var(--secondary);
+    font-size: 12px;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
