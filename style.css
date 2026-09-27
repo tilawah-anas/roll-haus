@@ -202,23 +202,108 @@ img {
   color: var(--secondary);
 }
 
-/* TABLET */
+/* MENU PREVIEW SECTION */
+.menu-preview {
+  padding: 80px 24px;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.menu-header h3 {
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.menu-header hr {
+  border: none;
+  height: 1px;
+  width: 200px;
+  margin-bottom: 20px;
+  background-color: var(--secondary);
+}
+
+.menu-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* GRID */
+.flavor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1050px;   /* keeps it to 3 cards max */
+  margin-bottom: 60px;
+}
+
+/* CARD */
+.flavor-card {
+  width: 320px;
+  background-color: var(--secondary);
+  border-radius: 12px;
+  overflow: hidden;    /* clips the image corners to the card */
+  display: flex;
+  flex-direction: column;
+}
+
+.flavor-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.flavor-info {
+  padding: 16px;
+  text-align: center;
+  color: var(--primary);
+}
+
+.flavor-info h4 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
 @media (max-width: 900px) {
+  /* ABOUT */
   .about-container {
     gap: 32px;
   }
 
+  /* HERO */
   .hero-container h1 {
     font-size: clamp(40px, 9vw, 72px);
   }
 
+  /* ABOUT */
   .about-text h1 {
     font-size: clamp(40px, 8vw, 64px);
   }
+
+  /* MENU PREVIEW */
+  .flavor-card {
+    width: 260px;
+  }
 }
 
-/* MOBILE */
+/* MOBILE — max-width: 600px */
 @media (max-width: 600px) {
+  /* NAV */
   .navbar {
     padding: 0 16px;
   }
@@ -231,6 +316,7 @@ img {
     font-size: 13px;
   }
 
+  /* HERO */
   .hero {
     padding: calc(var(--nav-height) + 40px) 20px 60px;
   }
@@ -255,11 +341,13 @@ img {
     margin-bottom: 32px;
   }
 
+  /* BUTTON */
   .btn {
     font-size: 12px;
     padding: 10px 20px;
   }
 
+  /* ABOUT */
   .about-haus {
     padding: 50px 20px;
   }
@@ -283,5 +371,16 @@ img {
   .about-text p {
     font-size: 14px;
     margin-bottom: 24px;
+  }
+
+  /* MENU PREVIEW — 1 column */
+  .flavor-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flavor-card {
+    width: 100%;
+    max-width: 340px;
   }
 }
