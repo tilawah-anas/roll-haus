@@ -1,14 +1,29 @@
-:root {
-  --primary: #fce6e9;
-  --secondary: #c23a61;
-  --radius-sm: 8px;
-  --radius-pill: 999px;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url(fonts/PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url(fonts/Lato-Regular.ttf);
+}
+
+:root {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+  --primary: #fce6e9;
+  --secondary: #c23a61;
+  --radius-pill: 999px;
+}
+
+body {
+  background-color: var(--primary);
 }
 
 /* NAVIGATION BAR */
@@ -54,9 +69,68 @@
     color: var(--secondary);
     font-size: 14px;
     transition: 0.3s;
+    font-family: var(--font-body);
   }
 
   a:hover {
     text-decoration: underline;
+  }
+}
+
+.hero {
+  padding: 50px 20px;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    color: var(--secondary);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 40px;
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: var(--secondary);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    width: 60%;
+    margin-bottom: 50px;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-family: var(--font-body);
+    border: 1px solid var(--secondary);
+    padding: 10px 15px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
   }
 }
