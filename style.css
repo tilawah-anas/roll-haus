@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: "Dancing Script";
-  src: url(fonts/DancingScript-VariableFont_wght.ttf);
+  font-family: "Playfair Display";
+  src: url(fonts/PlayfairDisplay-VariableFont_wght.ttf);
 }
 
 @font-face {
@@ -145,11 +145,24 @@ body {
 }
 
 @media (max-width: 600px) {
+  .nav-right {
+    a {
+      font-size: 12px;
+    }
+  }
   .hero-container {
+    h3 {
+      font-size: 12px;
+    }
+
     h1 {
-      font-size: 50px;
-      width: 60%;
+      font-size: 60px;
+      width: 90%;
       margin-bottom: 10px;
+
+      span {
+        font-style: italic;
+      }
     }
 
     hr {
