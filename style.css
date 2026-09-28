@@ -258,6 +258,7 @@ img {
   overflow: hidden;    /* clips the image corners to the card */
   display: flex;
   flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 .flavor-card img {
@@ -279,6 +280,81 @@ img {
   margin-bottom: 4px;
 }
 
+/* ORDER STEPS */
+.order-steps {
+  padding: 80px 24px;
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+.order-steps-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.order-steps-container h1 {
+  margin-bottom: 40px;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: var(--font-heading);
+}
+
+.order-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 30px;
+  width: 80%;
+  margin-bottom: 60px;
+}
+
+.order-steps-grid-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--primary);
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.order-steps-grid-items:hover {
+  transform: translateY(-5px);
+}
+
+.order-steps-grid-items span {
+  font-size: 48px;
+  font-family: var(--font-heading);
+  margin-bottom: 30px;
+}
+
+.order-steps-grid-items h4 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.order-steps-grid-items p {
+  font-size: 15px;
+  text-align: center;
+  width: 70%;
+  margin-bottom: 25px;
+}
+
+.order-steps-container .btn {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.order-steps-container .btn:hover {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
 @media (max-width: 900px) {
   /* ABOUT */
   .about-container {
@@ -298,6 +374,16 @@ img {
   /* MENU PREVIEW */
   .flavor-card {
     width: 260px;
+  }
+
+  /* ORDER STEPS */
+  .order-steps-grid {
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+  }
+
+  .order-steps-container h1 {
+    font-size: 40px;
   }
 }
 
@@ -382,5 +468,42 @@ img {
   .flavor-card {
     width: 100%;
     max-width: 340px;
+  }
+
+  /* ORDER STEPS */
+  .order-steps {
+    padding: 50px 20px;
+  }
+
+  .order-steps-container h1 {
+    font-size: 32px;
+    margin-bottom: 28px;
+  }
+
+  .order-steps-grid {
+    grid-template-columns: 1fr;
+    width: 80%;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .order-steps-grid-items {
+    padding: 20px 16px;
+  }
+
+  .order-steps-grid-items span {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .order-steps-grid-items h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .order-steps-grid-items p {
+    width: 90%;
+    font-size: 14px;
+    margin-bottom: 0;
   }
 }
