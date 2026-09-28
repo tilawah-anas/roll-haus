@@ -355,6 +355,87 @@ img {
   color: var(--secondary);
 }
 
+/* FOOTER */
+.footer {
+  padding: 30px;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 90px;
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: var(--font-heading);
+  font-style: italic;
+}
+
+.footer-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-items p {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.copyright hr {
+  border: none;
+  height: 1px;
+  width: 80%;
+  background-color: var(--secondary);
+}
+
+.copyright p {
+  font-size: 14px;
+}
+
 @media (max-width: 900px) {
   /* ABOUT */
   .about-container {
@@ -384,6 +465,19 @@ img {
 
   .order-steps-container h1 {
     font-size: 40px;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 24px 20px;
+  }
+
+  .footer-links {
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
   }
 }
 
@@ -505,5 +599,46 @@ img {
     width: 90%;
     font-size: 14px;
     margin-bottom: 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 12px 24px;
+  }
+
+  .logo img {
+    width: 70px;
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .footer-items p {
+    font-size: 13px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .footer-links {
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: nowrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .footer-links i {
+    font-size: 12px;
+  }
+
+  .copyright {
+    gap: 12px;
+  }
+
+  .copyright p {
+    font-size: 12px;
   }
 }
