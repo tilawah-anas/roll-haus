@@ -22,7 +22,7 @@ async function getFlavours() {
 
 function buildOrderLink(flavours) {
   const number = "2347079733184";
-  const message = `Hi Roll Haus! I'd like to order: 1x ${flavours.name}`;
+  const message = `Hi Roll Haus! I'd like to order: ${flavours.name} — quantity: `;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 

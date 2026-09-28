@@ -80,6 +80,8 @@ img {
   margin-top: 50px;
   padding: 100px 150px 80px;
   width: 100%;
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
 .menu-hero-container {
@@ -104,7 +106,7 @@ img {
 
 .menu-text h1 {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: 60px;
   margin-bottom: 20px;
 }
 
@@ -112,8 +114,86 @@ img {
   border: none;
   height: 1px;
   width: 80%;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   margin-bottom: 15px;
+}
+
+/* MENU LIST */
+.menu-list {
+  padding: 40px 24px 80px;
+}
+
+.menu-list-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.menu-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* MENU CARD */
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.menu-card-img {
+  flex-shrink: 0;
+}
+
+.menu-card-img img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.menu-card-info {
+  flex: 1;
+}
+
+.menu-card-info h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.menu-card-info p {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.menu-card-info span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn-small {
+  padding: 8px 18px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  transition: 0.3s;
+}
+
+.btn-small:hover {
+  background-color: var(--primary);
+  color: var(--secondary);
 }
 
 /* FOOTER */
@@ -211,6 +291,11 @@ img {
     font-size: 40px;
   }
 
+  /* MENU CARD */
+  .menu-list-container {
+    max-width: 600px;
+  }
+
   /* FOOTER */
   .footer {
     padding: 24px 20px;
@@ -269,6 +354,38 @@ img {
   .menu-text p {
     font-size: 13px;
     text-align: center;
+  }
+
+  /* MENU CARD */
+  .menu-list {
+    padding: 20px 16px 60px;
+  }
+
+  .menu-card {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .menu-card-img img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .menu-card-info h4 {
+    font-size: 16px;
+  }
+
+  .menu-card-info p {
+    font-size: 8px;
+  }
+
+  .menu-card-info span {
+    font-size: 13px;
+  }
+
+  .btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   /* FOOTER */
