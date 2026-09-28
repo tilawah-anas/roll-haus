@@ -22,7 +22,7 @@ async function getFlavours() {
 
 function buildOrderLink(flavours) {
   const number = "2347079733184";
-  const message = `Hi Roll Haus! I'd like to order: ${flavours.name} — quantity: `;
+  const message = `Hi Roll Haus! I'd like to order: ${flavours.name}, quantity: `;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
@@ -39,7 +39,14 @@ function createCard(flavours) {
         <p>${flavours.description}</p>
         <span>₦${flavours.price}</span>
       </div>
-      <a href="${buildOrderLink(flavours)}" class="btn btn-small" target="_blank">Order</a>
+      <div class="menu-card-actions">
+        <div class="quantity-picker">
+          <button class="qty-btn" data-action="minus">−</button>
+          <span class="qty-value">1</span>
+          <button class="qty-btn" data-action="plus">+</button>
+        </div>
+        <a href="#" class="btn btn-small order-btn" data-flavor="${flavours.name}">Order</a>
+      </div>
     </div>
   `;
 }
@@ -58,3 +65,36 @@ async function renderMenu() {
 }
 
 renderMenu();
+
+document.addEventListener("click", function (event) {
+  const qtyBtn = event.target.closest(".qty-btn");
+  if (qtyBtn) {
+    const picker = qtyBtn.closest(".quantity-picker");
+    const valueSpan = picker.querySelector(".qty-value");
+    let current = parseInt(valueSpan.textContent);
+
+    if (qtyBtn.dataset.action === "plus") {
+      current++;
+    } else if (qtyBtn.dataset.action === "minus" && current > 1) {
+      current--;
+    }
+
+    valueSpan.textContent = current;
+    return;
+  }
+
+  const orderBtn = event.target.closest(".order-btn");
+  if (orderBtn) {
+    event.preventDefault();
+
+    const card = orderBtn.closest(".menu-card");
+    const qty = card.querySelector(".qty-value").textContent;
+    const flavourName = orderBtn.dataset.flavours;
+
+    const number = "2347079733184";
+    const message = `Hi Roll Haus! I'd like to order: ${qty}x ${flavourName}`;
+    const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  }
+});
