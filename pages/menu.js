@@ -20,24 +20,24 @@ async function getFlavours() {
   return data;
 }
 
-function buildOrderLink(flavours) {
+function buildOrderLink(flavour) {
   const number = "2347079733184";
-  const message = `Hi Roll Haus! I'd like to order: ${flavours.name}, quantity: `;
+  const message = `Hi Roll Haus! I'd like to order: ${flavour.name}, quantity: `;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
-function createCard(flavours) {
-  const image = flavours.image_url || "../assets/menu-preview-img.jpg";
+function createCard(flavour) {
+  const image = flavour.image_url || "../assets/menu-preview-img.jpg";
 
   return `
     <div class="menu-card">
       <div class="menu-card-img">
-        <img src="${image}" alt="${flavours.name}">
+        <img src="${image}" alt="${flavour.name}">
       </div>
       <div class="menu-card-info">
-        <h4>${flavours.name}</h4>
-        <p>${flavours.description}</p>
-        <span>₦${flavours.price}</span>
+        <h4>${flavour.name}</h4>
+        <p>${flavour.description}</p>
+        <span>₦${flavour.price}</span>
       </div>
       <div class="menu-card-actions">
         <div class="quantity-picker">
@@ -45,7 +45,7 @@ function createCard(flavours) {
           <span class="qty-value">1</span>
           <button class="qty-btn" data-action="plus">+</button>
         </div>
-        <a href="#" class="btn btn-small order-btn" data-flavor="${flavours.name}">Order</a>
+        <a href="#" class="btn btn-small order-btn" data-flavour="${flavour.name}">Order</a>
       </div>
     </div>
   `;
@@ -89,7 +89,7 @@ document.addEventListener("click", function (event) {
 
     const card = orderBtn.closest(".menu-card");
     const qty = card.querySelector(".qty-value").textContent;
-    const flavourName = orderBtn.dataset.flavor;
+    const flavourName = orderBtn.dataset.flavour;
 
     const number = "2347079733184";
     const message = `Hi Roll Haus! I'd like to order: ${qty}x ${flavourName}`;
