@@ -89,7 +89,7 @@ document.addEventListener("click", function (event) {
 
     const card = orderBtn.closest(".menu-card");
     const qty = card.querySelector(".qty-value").textContent;
-    const flavourName = orderBtn.dataset.flavours;
+    const flavourName = orderBtn.dataset.flavor;
 
     const number = "2347079733184";
     const message = `Hi Roll Haus! I'd like to order: ${qty}x ${flavourName}`;
