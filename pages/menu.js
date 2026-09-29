@@ -10,6 +10,7 @@ async function getFlavours() {
     .from("flavours")
     .select("*")
     .eq("available", true)
+    .eq("is_special", false)
     .order("created_at", { ascending: true });
 
   if (error) {
