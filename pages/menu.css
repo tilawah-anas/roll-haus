@@ -143,6 +143,7 @@ img {
   color: var(--primary);
   border-radius: 16px;
   padding: 16px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 .menu-card-img {
@@ -237,6 +238,34 @@ img {
 .btn-small:hover {
   background-color: var(--primary);
   color: var(--secondary);
+}
+
+/* ORDER BAR */
+.order-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.order-now-btn {
+  font-size: 15px;
+  padding: 14px 32px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius-pill);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.order-now-btn:hover:not(:disabled) {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+.order-now-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* FOOTER */

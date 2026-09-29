@@ -20,11 +20,6 @@ async function getFlavours() {
   return data;
 }
 
-function buildOrderLink(flavour) {
-  const number = "2347079733184";
-  const message = `Hi Roll Haus! I'd like to order: ${flavour.name}, quantity: `;
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-}
 
 function createCard(flavour) {
   const image = flavour.image_url || "../assets/menu-preview-img.jpg";
@@ -42,14 +37,14 @@ function createCard(flavour) {
       <div class="menu-card-actions">
         <div class="quantity-picker">
           <button class="qty-btn" data-action="minus">−</button>
-          <span class="qty-value">1</span>
+          <span class="qty-value">0</span>
           <button class="qty-btn" data-action="plus">+</button>
         </div>
-        <a href="#" class="btn btn-small order-btn" data-flavour="${flavour.name}">Order</a>
       </div>
     </div>
   `;
 }
+
 
 async function renderMenu() {
   const flavours = await getFlavours();
@@ -66,6 +61,7 @@ async function renderMenu() {
 
 renderMenu();
 
+
 document.addEventListener("click", function (event) {
   const qtyBtn = event.target.closest(".qty-btn");
   if (qtyBtn) {
@@ -75,26 +71,53 @@ document.addEventListener("click", function (event) {
 
     if (qtyBtn.dataset.action === "plus") {
       current++;
-    } else if (qtyBtn.dataset.action === "minus" && current > 1) {
+    } else if (qtyBtn.dataset.action === "minus" && current > 0) {
       current--;
     }
 
     valueSpan.textContent = current;
+    updateOrderButton();
     return;
   }
 
-  const orderBtn = event.target.closest(".order-btn");
+  const orderBtn = event.target.closest("#order-now");
   if (orderBtn) {
-    event.preventDefault();
+    const cards = document.querySelectorAll(".menu-card");
+    const lines = [];
 
-    const card = orderBtn.closest(".menu-card");
-    const qty = card.querySelector(".qty-value").textContent;
-    const flavourName = orderBtn.dataset.flavour;
+    cards.forEach(function (card) {
+      const qty = parseInt(card.querySelector(".qty-value").textContent);
+      if (qty > 0) {
+        const name = card.querySelector("h4").textContent;
+        lines.push(`${qty}x ${name}`);
+      }
+    });
 
     const number = "2347079733184";
-    const message = `Hi Roll Haus! I'd like to order: ${qty}x ${flavourName}`;
+    const message = `Hi Roll Haus! I'd like to order:\n${lines.join("\n")}`;
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
   }
 });
+
+
+function updateOrderButton() {
+  const cards = document.querySelectorAll(".menu-card");
+  let total = 0;
+
+  cards.forEach(function (card) {
+    const qty = parseInt(card.querySelector(".qty-value").textContent);
+    if (qty > 0) total += qty;
+  });
+
+  const btn = document.getElementById("order-now");
+
+  if (total === 0) {
+    btn.disabled = true;
+    btn.textContent = "Order now (0 items)";
+  } else {
+    btn.disabled = false;
+    btn.textContent = `Order now (${total} item${total === 1 ? "" : "s"})`;
+  }
+}
