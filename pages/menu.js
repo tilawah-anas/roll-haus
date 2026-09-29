@@ -1,10 +1,10 @@
 const supabaseUrl = "https://inzbcwyfynzbauiaztvh.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImluemJjd3lmeW56YmF1aWF6dHZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0OTAyNjcsImV4cCI6MjEwNjA2NjI2N30.u0V75PXlrvr-aVwoxUw_Xhn6Y1R4q6LVHMpB3LkSWtc";
 
-// Create the client
+
 const db = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-// Functions that use db
+
 async function getFlavours() {
   const { data, error } = await db
     .from("flavours")
@@ -18,6 +18,22 @@ async function getFlavours() {
   }
 
   return data;
+}
+
+
+async function getSpecial() {
+  const { data, error } = await db
+    .from("flavours")
+    .select("*")
+    .eq("is_special", true)
+    .eq("available", true)
+    .limit(1);
+
+  if (error || !data || data.length === 0) {
+    return null;
+  }
+
+  return data[0];
 }
 
 
@@ -46,6 +62,27 @@ function createCard(flavour) {
 }
 
 
+function createSpecialCard(flavour) {
+  const image = flavour.image_url || "../assets/menu-preview-img.jpg";
+
+  return `
+    <div class="special-card-img">
+      <img src="${image}" alt="${flavour.name}">
+    </div>
+    <div class="special-card-info">
+      <h4>${flavour.name}</h4>
+      <p>${flavour.description}</p>
+      <span class="special-price">₦${flavour.price}</span>
+      <div class="quantity-picker">
+        <button class="qty-btn" data-action="minus">−</button>
+        <span class="qty-value">0</span>
+        <button class="qty-btn" data-action="plus">+</button>
+      </div>
+    </div>
+  `;
+}
+
+
 async function renderMenu() {
   const flavours = await getFlavours();
   const container = document.getElementById("menu-cards");
@@ -59,6 +96,22 @@ async function renderMenu() {
   container.innerHTML = html;
 }
 
+
+async function renderSpecial() {
+  const special = await getSpecial();
+
+  if (!special) {
+    return; // section stays hidden
+  }
+
+  const container = document.getElementById("special-card");
+  const section = document.getElementById("specials");
+
+  container.innerHTML = createSpecialCard(special);
+  section.removeAttribute("hidden");
+}
+
+renderSpecial();
 renderMenu();
 
 
@@ -82,7 +135,7 @@ document.addEventListener("click", function (event) {
 
   const orderBtn = event.target.closest("#order-now");
   if (orderBtn) {
-    const cards = document.querySelectorAll(".menu-card");
+    const cards = document.querySelectorAll(".menu-card, .special-card");
     const lines = [];
 
     cards.forEach(function (card) {
