@@ -156,7 +156,7 @@ document.addEventListener("click", function (event) {
 
 
 function updateOrderButton() {
-  const cards = document.querySelectorAll(".menu-card");
+  const cards = document.querySelectorAll(".menu-card, .special-card");
   let total = 0;
 
   cards.forEach(function (card) {
