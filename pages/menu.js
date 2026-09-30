@@ -140,7 +140,10 @@ document.addEventListener("click", function (event) {
     const lines = [];
 
     cards.forEach(function (card) {
-      const qty = parseInt(card.querySelector(".qty-value").textContent);
+      const valueSpan = card.querySelector(".qty-value");
+      if (!valueSpan) return;
+
+      const qty = parseInt(valueSpan.textContent);
       if (qty > 0) {
         const name = card.querySelector("h4").textContent;
         lines.push(`${qty}x ${name}`);
@@ -161,7 +164,10 @@ function updateOrderButton() {
   let total = 0;
 
   cards.forEach(function (card) {
-    const qty = parseInt(card.querySelector(".qty-value").textContent);
+    const valueSpan = card.querySelector(".qty-value");
+    if (!valueSpan) return;
+
+    const qty = parseInt(valueSpan.textContent);
     if (qty > 0) total += qty;
   });
 
